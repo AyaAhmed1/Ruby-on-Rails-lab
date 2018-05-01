@@ -23,8 +23,8 @@
 
   <div class="field">
     <%= form.label :gender %>
-    <%= form.number_field :gender, id: :user_gender %>
-  </div>
+    <%= form.select :gender, User.genders.keys %>
+  </div>  
 
   <div class="actions">
     <%= form.submit %>
