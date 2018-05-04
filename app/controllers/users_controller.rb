@@ -1,6 +1,12 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
+  def male
+    @users = User.where(gender: User.genders["male"])
+    user = @users.first
+    redirect_to user
+  end
+
   # GET /users
   # GET /users.json
   def index
@@ -69,6 +75,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:name, :email, :gender)
+      params.require(:user).permit(:name, :last_name, :email, :gender)
     end
 end
